@@ -1,0 +1,6 @@
+[submodule "ThirdParty/LearNN"]
+	path = ThirdParty/LearNN
+	url = https://github.com/VynDev/LearNN.git
+[submodule "ThirdParty/EnvGine"]
+	path = ThirdParty/EnvGine
+	url = https://github.com/VynDev/EnvGine.git

@@ -1,0 +1,7 @@
+*.make
+Makefile
+obj
+lib
+premake5
+.vscode
+*.code-workspace
