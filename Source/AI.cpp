@@ -8,14 +8,10 @@ using namespace LearNN;
 
 int AI::nextId = 0;
 
-AI::AI() {
-    id = nextId;
-    ++nextId;
-
-    neuralNet.SetInputSize(8);
-	neuralNet.AddLayer(new DenseLayer<Sigmoid>(8));
-    neuralNet.AddLayer(new DenseLayer<Sigmoid>(16));
-	neuralNet.AddLayer(new DenseLayer<Sigmoid>(4));
+AI::AI() : neuralNet(8), id(nextId++) {
+	neuralNet.AddDenseLayer<Sigmoid>(8);
+    neuralNet.AddDenseLayer<Sigmoid>(16);
+	neuralNet.AddDenseLayer<Sigmoid>(4);
 }
 
 NeuralNetwork &AI::GetNeuralNetwork() {

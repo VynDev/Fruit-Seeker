@@ -2,6 +2,7 @@
 Makefile
 obj
 lib
+bin
 premake5
 .vscode
 *.code-workspace
