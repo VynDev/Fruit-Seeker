@@ -20,10 +20,10 @@ class AI {
 
     int id = 0;
     
-    LearNN::InputVector CalcNeuralNetInput_(Game &game);
-    void SetWallsDistance_(Game &game, LearNN::InputVector &NeuralNetInput);
-    void SetBodyDistance_(Game &game, LearNN::InputVector &NeuralNetInput);
-    void SetFruitDistance_(Game &game, LearNN::InputVector &NeuralNetInput);
+    LearNN::Input CalcNeuralNetInput_(Game &game);
+    void SetWallsDistance_(Game &game, LearNN::Input &NeuralNetInput);
+    void SetBodyDistance_(Game &game, LearNN::Input &NeuralNetInput);
+    void SetFruitDistance_(Game &game, LearNN::Input &NeuralNetInput);
 
     LearNN::NeuralNetwork neuralNet;
     int lastDirection = 0;

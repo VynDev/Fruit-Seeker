@@ -18,11 +18,11 @@ NeuralNetwork &AI::GetNeuralNetwork() {
     return neuralNet;
 }
 
-int GetIndexMaxValue(NumericalVector v) {
+int GetIndexMaxValue(std::vector<double> v) {
     double maxValue = 0;
     int index;
     bool firstLoop = true;
-    for (int i = 0; i < v.Size(); ++i) {
+    for (int i = 0; i < v.size(); ++i) {
         if (firstLoop || v[i] > maxValue) {
             firstLoop = false;
             maxValue = v[i];
@@ -33,14 +33,13 @@ int GetIndexMaxValue(NumericalVector v) {
 }
 
 int AI::GetDirection(Game &game) {
-    InputVector neuralNetInput = CalcNeuralNetInput_(game);
-    InputVector v = neuralNet.CalculateOutput(neuralNetInput);
+    Input neuralNetInput = CalcNeuralNetInput_(game);
+    Input v = neuralNet.CalculateOutput(neuralNetInput);
 
     if (id == Project()->ais[0]->GetAI()->GetId())
     {
         //std::cout << "A: " << neuralNetInput << std::endl;
     }
-        
 
     int direction_ = GetIndexMaxValue(v) + 1;
 
@@ -58,7 +57,7 @@ int AI::GetDirection(Game &game) {
 }
 
 /*  Input map:
-*   
+*
 *   0: UP distance to the wall
 *   1: LEFT distance to the wall
 *   2: DOWN distance to the wall
@@ -73,11 +72,11 @@ int AI::GetDirection(Game &game) {
 *   9: LEFT distance to the fruit
 *   10: DOWN distance to the fruit
 *   11: RIGHT distance to the fruit
-*   
+*
 */
 
-InputVector AI::CalcNeuralNetInput_(Game &game) {
-    InputVector NeuralNetInput;
+Input AI::CalcNeuralNetInput_(Game &game) {
+    Input NeuralNetInput;
 
     SetWallsDistance_(game, NeuralNetInput);
     //SetBodyDistance_(game, NeuralNetInput);
@@ -86,16 +85,16 @@ InputVector AI::CalcNeuralNetInput_(Game &game) {
     return NeuralNetInput;
 }
 
-void AI::SetWallsDistance_(Game &game, InputVector &NeuralNetInput) {
+void AI::SetWallsDistance_(Game &game, Input &NeuralNetInput) {
     const Player &player = game.GetPlayer();
-    
+
     NeuralNetInput.push_back((double)player.GetCaseX() / (double)game.GetMap().GetWidthCaseCount());
     NeuralNetInput.push_back((double)player.GetCaseY() / (double)game.GetMap().GetHeightCaseCount());
     NeuralNetInput.push_back((double)(game.GetMap().GetWidthCaseCount() - player.GetCaseX()) / (double)game.GetMap().GetWidthCaseCount());
     NeuralNetInput.push_back((double)(game.GetMap().GetHeightCaseCount() - player.GetCaseY()) / (double)game.GetMap().GetHeightCaseCount());
 }
 
-void AI::SetBodyDistance_(Game &game, InputVector &NeuralNetInput) {
+void AI::SetBodyDistance_(Game &game, Input &NeuralNetInput) {
     const Player &player = game.GetPlayer();
 
     bool right = false;
@@ -140,7 +139,7 @@ void AI::SetBodyDistance_(Game &game, InputVector &NeuralNetInput) {
         NeuralNetInput.push_back(2);
 }
 
-void AI::SetFruitDistance_(Game &game, InputVector &NeuralNetInput) {
+void AI::SetFruitDistance_(Game &game, Input &NeuralNetInput) {
     const Player &player = game.GetPlayer();
 
     if (player.GetCaseY() == game.GetFruit().GetCaseY() && player.GetCaseX() > game.GetFruit().GetCaseX()) {
