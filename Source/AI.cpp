@@ -1,5 +1,5 @@
 #include "AI.h"
-#include "LearnNN.h"
+#include "LearNN/LearnNN.h"
 #include "Map.h"
 #include "Fruit.h"
 #include "Project.h"

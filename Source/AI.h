@@ -1,5 +1,5 @@
 #pragma once
-#include "LearnNN.h"
+#include "LearNN/LearnNN.h"
 #include "Player.h"
 #include "Game.h"
 
