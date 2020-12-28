@@ -4,7 +4,7 @@ solution "FruitSeeker"
 	project "FruitSeeker"
 		kind "ConsoleApp"
 
-		links {"ThirdParty/LearNN/bin/LearNN"}
+		links {"ThirdParty/LearNN/bin/LearNN", "ThirdParty/LearNN/libs/json-parser/bin/json-parser"}
 		includedirs {"ThirdParty/LearNN/include"}
 
 		links {"ThirdParty/EnvGine/lib/EnvGine"}
