@@ -41,3 +41,22 @@ Of course the best snakes (elite) will stay in the next generation to prevent re
 ### Crossover
 
 Here's how 2 snakes crossover: for each weight of the neural network, the child has 50% chance to get one of the "mother" and 50% to get of the "father", then there is between 1% and 2% chnce to have a mutation of the weight (basically, randomized or shifted).
+
+## Build & Run
+
+### Requirements
+
+- git
+- g++ (developed with g++ (GCC) 10.2.0 on Arch Linux)
+- premake5
+- make
+
+### Steps (Linux)
+
+Inside the project root folder:
+```
+git submodule update --init --recursive
+premake5 gmake
+make
+./bin/FruitSeeker
+```

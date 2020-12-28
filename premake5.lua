@@ -17,6 +17,9 @@ solution "FruitSeeker"
 
 		targetdir "bin"
 
+		prebuildcommands {"cd ThirdParty/LearNN && premake5 gmake && make"}
+		prebuildcommands {"cd ThirdParty/EnvGine && premake5 gmake && make"}
+
 	configuration "Debug"
 		defines {"DEBUG"}
 
